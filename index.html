@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jannik Birkholz — Technical Consultant specializing in electrochemistry, redox flow batteries, and hydrogen-iron hybrid systems.">
+  <meta property="og:title" content="Jannik Birkholz | Technical Consultant | Electrochemistry">
+  <meta property="og:description" content="Electrochemical cell development, feasibility studies, and prototyping for energy storage systems.">
+  <meta property="og:type" content="website">
+  <title>Jannik Birkholz | Technical Consultant | Electrochemistry</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='2' y='26' font-family='monospace' font-size='28' fill='%233AAFA9'>J</text></svg>" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/GeistVF.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/GeistMonoVF.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#hero" class="nav__logo" aria-label="Home">JB</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#technologies">Technologies</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact" class="nav__cta">Contact</a></li>
+      </ul>
+      <button class="nav__hamburger" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav__overlay" id="nav-overlay">
+    <ul class="nav__overlay-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#technologies">Technologies</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <main id="main">
+
+    <!-- ════════ HERO — animated battery SVG background ════════ -->
+    <section class="hero" id="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <!-- Large animated iron redox flow battery schematic -->
+        <svg class="hero__battery-svg" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <!-- Left tank (charged — Fe2+) -->
+          <rect x="80" y="120" width="180" height="340" rx="12" stroke="var(--color-iron)" stroke-width="2" class="hero-cell-stroke"/>
+          <rect x="82" y="122" width="176" height="336" rx="10" fill="var(--color-iron)" opacity="0.06" class="hero-tank hero-tank--left"/>
+          <text x="170" y="300" text-anchor="middle" class="hero-chem-label hero-chem-label--iron">Fe</text>
+          <!-- Electrolyte level indicator -->
+          <rect x="90" y="200" width="160" height="252" rx="6" fill="var(--color-iron)" opacity="0.08" class="hero-tank hero-tank--left"/>
+
+          <!-- Right tank (discharged — Fe3+) -->
+          <rect x="940" y="120" width="180" height="340" rx="12" stroke="var(--color-accent)" stroke-width="2" class="hero-cell-stroke"/>
+          <rect x="942" y="122" width="176" height="336" rx="10" fill="var(--color-accent)" opacity="0.06" class="hero-tank hero-tank--right"/>
+          <text x="1030" y="300" text-anchor="middle" class="hero-chem-label hero-chem-label--teal">Fe</text>
+          <rect x="950" y="200" width="160" height="252" rx="6" fill="var(--color-accent)" opacity="0.08" class="hero-tank hero-tank--right"/>
+
+          <!-- Cell stack (center) -->
+          <rect x="460" y="140" width="280" height="300" rx="8" stroke="var(--color-text-dim)" stroke-width="2" opacity="0.5"/>
+          <!-- Membrane (center line) -->
+          <line x1="600" y1="140" x2="600" y2="440" stroke="var(--color-accent)" stroke-width="3" opacity="0.6"/>
+          <!-- Electrode plates -->
+          <line x1="520" y1="150" x2="520" y2="430" stroke="var(--color-text-dim)" stroke-width="1.5" stroke-dasharray="8 5" opacity="0.3"/>
+          <line x1="680" y1="150" x2="680" y2="430" stroke="var(--color-text-dim)" stroke-width="1.5" stroke-dasharray="8 5" opacity="0.3"/>
+          <text x="600" y="130" text-anchor="middle" fill="var(--color-text-dim)" font-size="14" font-family="var(--font-mono)" opacity="0.4">CELL STACK</text>
+
+          <!-- Flow pipes — top (to cell) -->
+          <path class="flow-arrow flow-arrow--iron" d="M260 180 L460 180" stroke="var(--color-iron)" stroke-width="2" fill="none"/>
+          <path class="flow-arrow flow-arrow--teal" d="M740 180 L940 180" stroke="var(--color-accent)" stroke-width="2" fill="none" style="animation-delay:-1s"/>
+          <!-- Flow pipes — bottom (from cell) -->
+          <path class="flow-arrow flow-arrow--iron" d="M460 400 L260 400" stroke="var(--color-iron)" stroke-width="2" fill="none" style="animation-delay:-2s"/>
+          <path class="flow-arrow flow-arrow--teal" d="M940 400 L740 400" stroke="var(--color-accent)" stroke-width="2" fill="none" style="animation-delay:-0.5s"/>
+
+          <!-- Pump symbols -->
+          <circle cx="360" cy="180" r="18" stroke="var(--color-iron)" stroke-width="1.5" fill="none" opacity="0.3"/>
+          <path d="M352 180 L368 180 M360 172 L360 188" stroke="var(--color-iron)" stroke-width="1.5" opacity="0.3"/>
+          <circle cx="840" cy="180" r="18" stroke="var(--color-accent)" stroke-width="1.5" fill="none" opacity="0.3"/>
+          <path d="M832 180 L848 180 M840 172 L840 188" stroke="var(--color-accent)" stroke-width="1.5" opacity="0.3"/>
+
+          <!-- Electron flow on top -->
+          <path d="M520 140 L520 90 L680 90 L680 140" stroke="var(--color-text-dim)" stroke-width="1.5" fill="none" stroke-dasharray="6 4" opacity="0.25"/>
+          <text x="600" y="82" text-anchor="middle" fill="var(--color-text-dim)" font-size="13" font-family="var(--font-mono)" opacity="0.3">e&#8315; &#8594;</text>
+
+          <!-- Decorative grid lines -->
+          <line x1="0" y1="550" x2="1200" y2="550" stroke="var(--color-border)" stroke-width="0.5" opacity="0.3"/>
+          <line x1="0" y1="600" x2="1200" y2="600" stroke="var(--color-border)" stroke-width="0.5" opacity="0.2"/>
+          <line x1="400" y1="0" x2="400" y2="700" stroke="var(--color-border)" stroke-width="0.5" opacity="0.15"/>
+          <line x1="800" y1="0" x2="800" y2="700" stroke="var(--color-border)" stroke-width="0.5" opacity="0.15"/>
+        </svg>
+        <div class="hero__vignette"></div>
+      </div>
+      <div class="container hero__content">
+        <span class="label reveal-up" data-delay="0">Electrochemical Engineer</span>
+        <h1 class="hero__name reveal-up" data-delay="1">Jannik Birkholz</h1>
+        <p class="hero__title reveal-up" data-delay="3">Technical Consultant&ensp;|&ensp;Electrochemistry</p>
+        <p class="hero__tagline reveal-up" data-delay="4">Scalable electrochemistry: From benchtop validation to high performance power architectures.</p>
+        <div class="hero__actions reveal-up" data-delay="5">
+          <a href="#contact" class="btn btn--primary">Get in Touch</a>
+          <a href="#experience" class="btn btn--outline">View Experience</a>
+          <a href="#services" class="btn btn--outline">Services</a>
+          <a href="#technologies" class="btn btn--outline">Core Competencies</a>
+        </div>
+      </div>
+      <div class="hero__scroll-hint">
+        <span>Scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ════════ ABOUT — headshot center, stats around ════════ -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="about__header">
+          <span class="label reveal-up">About</span>
+          <h2 class="section-title split-reveal">Building the future of energy storage</h2>
+        </div>
+
+        <!-- Portrait + floating stat cards layout -->
+        <div class="portrait-stats reveal-up">
+          <div class="portrait-stats__photo">
+            <img src="assets/images/headshot.jpg" alt="Jannik Birkholz, electrochemical engineer" width="800" height="1308" loading="eager">
+          </div>
+          <!-- Floating stat cards positioned around the photo -->
+          <div class="portrait-stats__card portrait-stats__card--tl reveal-up" data-delay="1">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 2v24M2 14h24" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/><circle cx="14" cy="14" r="11" stroke="var(--color-accent)" stroke-width="1.5" opacity="0.3"/></svg>
+            <span class="portrait-stats__value"><span data-count="3">0</span>+</span>
+            <span class="portrait-stats__label">Years R&D Experience</span>
+          </div>
+          <div class="portrait-stats__card portrait-stats__card--tr reveal-up" data-delay="2">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="6" width="22" height="16" rx="2" stroke="var(--color-accent)" stroke-width="1.5"/><path d="M3 10h22" stroke="var(--color-accent)" stroke-width="1.5"/><circle cx="8" cy="18" r="1.5" fill="var(--color-accent)"/></svg>
+            <span class="portrait-stats__value">M.Sc.</span>
+            <span class="portrait-stats__label">Chemical Engineering, TUM</span>
+          </div>
+          <div class="portrait-stats__card portrait-stats__card--bl reveal-up" data-delay="3">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="8" height="20" rx="2" stroke="var(--color-accent)" stroke-width="1.5"/><rect x="16" y="10" width="8" height="14" rx="2" stroke="var(--color-accent)" stroke-width="1.5"/><line x1="8" y1="4" x2="8" y2="24" stroke="var(--color-accent)" stroke-width="1" stroke-dasharray="3 2" opacity="0.4"/></svg>
+            <span class="portrait-stats__value"><span data-count="5">0</span>+</span>
+            <span class="portrait-stats__label">Electrochemical Systems Built</span>
+          </div>
+          <div class="portrait-stats__card portrait-stats__card--br reveal-up" data-delay="4">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="var(--color-accent)" stroke-width="1.5"/><path d="M8 14c3-6 9-6 12 0" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round"/><circle cx="14" cy="14" r="2" fill="var(--color-accent)"/></svg>
+            <span class="portrait-stats__value"><span data-count="2">0</span></span>
+            <span class="portrait-stats__label">International Research Stays</span>
+          </div>
+        </div>
+
+        <div class="about__text">
+          <p class="reveal-up">I am an electrochemical engineer specializing in the development of next-generation energy storage and conversion systems. At VoltStorage in Munich, I led the design and optimization of iron redox flow battery cells and hydrogen-iron hybrid architectures &mdash; taking concepts from early-stage prototyping through to validated, performance-tested hardware.</p>
+          <p class="reveal-up">My background combines a Master&rsquo;s degree in Chemical Engineering from the Technical University of Munich with hands-on prototyping expertise across flow batteries, fuel cells, and electrolysis. I bring a rigorous, data-driven methodology to every project &mdash; from cell architecture design and flow field engineering to full electrochemical characterization.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════ SERVICES ════════ -->
+    <section class="services" id="services">
+      <div class="container">
+        <div class="services__header">
+          <span class="label reveal-up">Services</span>
+          <h2 class="section-title split-reveal">How I can help</h2>
+        </div>
+        <div class="services__list">
+          <a href="#contact" class="service reveal-up">
+            <span class="service__num">01</span>
+            <div class="service__text">
+              <h3>Electrochemical Cell Development</h3>
+              <p>End-to-end development of electrochemical cells &mdash; from concept through half-cell testing to full prototype. Specializing in redox flow batteries and hydrogen-hybrid architectures.</p>
+            </div>
+            <div class="service__arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </a>
+          <a href="#contact" class="service reveal-up">
+            <span class="service__num">02</span>
+            <div class="service__text">
+              <h3>Feasibility Studies &amp; Technology Assessment</h3>
+              <p>Data-backed evaluation of electrochemical technologies for your application. Performance benchmarking, cost-benefit analysis, and technology roadmapping for energy storage systems.</p>
+            </div>
+            <div class="service__arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </a>
+          <a href="#contact" class="service reveal-up">
+            <span class="service__num">03</span>
+            <div class="service__text">
+              <h3>Prototyping &amp; Test Bench Engineering</h3>
+              <p>Design and assembly of custom test benches and prototype cells. From CAD to hardware &mdash; including flow field design, membrane-electrode assembly, and system integration.</p>
+            </div>
+            <div class="service__arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </a>
+          <a href="#contact" class="service reveal-up">
+            <span class="service__num">04</span>
+            <div class="service__text">
+              <h3>Performance Optimization</h3>
+              <p>Systematic analysis and improvement of existing electrochemical systems. Electrochemical impedance spectroscopy, polarization analysis, and flow optimization to maximize efficiency.</p>
+            </div>
+            <div class="service__arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════ MARQUEE DIVIDER ════════ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Redox Flow Batteries</span><span class="marquee__dot"></span>
+        <span>Hydrogen Hybrid Cells</span><span class="marquee__dot"></span>
+        <span>Fuel Cell Technology</span><span class="marquee__dot"></span>
+        <span>Electrochemical Testing</span><span class="marquee__dot"></span>
+        <span>EIS &amp; Polarization</span><span class="marquee__dot"></span>
+        <span>Flow Field Design</span><span class="marquee__dot"></span>
+        <span>Cell Stack Development</span><span class="marquee__dot"></span>
+        <span>Redox Flow Batteries</span><span class="marquee__dot"></span>
+        <span>Hydrogen Hybrid Cells</span><span class="marquee__dot"></span>
+        <span>Fuel Cell Technology</span><span class="marquee__dot"></span>
+        <span>Electrochemical Testing</span><span class="marquee__dot"></span>
+        <span>EIS &amp; Polarization</span><span class="marquee__dot"></span>
+        <span>Flow Field Design</span><span class="marquee__dot"></span>
+        <span>Cell Stack Development</span><span class="marquee__dot"></span>
+      </div>
+    </div>
+
+    <!-- ════════ TECHNOLOGIES — GRID (no horizontal scroll) ════════ -->
+    <section class="technologies" id="technologies">
+      <div class="container">
+        <div class="technologies__header">
+          <span class="label reveal-up">Technologies</span>
+          <h2 class="section-title split-reveal">Core competencies</h2>
+          <p class="technologies__intro reveal-up">Deep expertise across the full spectrum of electrochemical energy storage and conversion.</p>
+        </div>
+        <div class="tech-grid">
+
+          <!-- 01 — Redox Flow Battery (NEW SVG illustration) -->
+          <div class="tech-card reveal-up">
+            <div class="tech-card__img-wrap">
+              <svg class="tech-card__svg" viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Left tank (Fe2+ = teal) -->
+                <rect x="30" y="50" width="100" height="200" rx="8" stroke="var(--color-accent)" stroke-width="1.5" opacity="0.7"/>
+                <rect x="35" y="120" width="90" height="125" rx="5" fill="var(--color-accent)" opacity="0.08"/>
+                <text x="80" y="185" text-anchor="middle" fill="var(--color-accent)" font-size="16" font-family="var(--font-mono)" font-weight="600">Fe&#178;&#8314;</text>
+                <!-- Right tank (Fe3+ = brown) -->
+                <rect x="350" y="50" width="100" height="200" rx="8" stroke="var(--color-iron)" stroke-width="1.5" opacity="0.7"/>
+                <rect x="355" y="120" width="90" height="125" rx="5" fill="var(--color-iron)" opacity="0.08"/>
+                <text x="400" y="185" text-anchor="middle" fill="var(--color-iron)" font-size="16" font-family="var(--font-mono)" font-weight="600">Fe&#179;&#8314;</text>
+                <!-- Cell stack (center) -->
+                <rect x="185" y="65" width="110" height="170" rx="6" stroke="var(--color-text-muted)" stroke-width="1.5" opacity="0.5"/>
+                <!-- Membrane -->
+                <line x1="240" y1="65" x2="240" y2="235" stroke="var(--color-accent)" stroke-width="2.5" opacity="0.6"/>
+                <!-- Electrode plates -->
+                <line x1="210" y1="72" x2="210" y2="228" stroke="var(--color-text-dim)" stroke-width="1" stroke-dasharray="5 4" opacity="0.4"/>
+                <line x1="270" y1="72" x2="270" y2="228" stroke="var(--color-text-dim)" stroke-width="1" stroke-dasharray="5 4" opacity="0.4"/>
+                <text x="240" y="56" text-anchor="middle" fill="var(--color-text-dim)" font-size="10" font-family="var(--font-mono)" opacity="0.6">CELL STACK</text>
+                <!-- Flow lines -->
+                <path class="flow-arrow flow-arrow--teal" d="M130 90 L185 90" stroke="var(--color-accent)" stroke-width="1.5" fill="none"/>
+                <path class="flow-arrow flow-arrow--teal" d="M185 210 L130 210" stroke="var(--color-accent)" stroke-width="1.5" fill="none" style="animation-delay:-1.5s"/>
+                <path class="flow-arrow flow-arrow--iron" d="M295 90 L350 90" stroke="var(--color-iron)" stroke-width="1.5" fill="none" style="animation-delay:-0.7s"/>
+                <path class="flow-arrow flow-arrow--iron" d="M350 210 L295 210" stroke="var(--color-iron)" stroke-width="1.5" fill="none" style="animation-delay:-2.2s"/>
+                <!-- Pumps -->
+                <circle cx="158" cy="90" r="12" stroke="var(--color-accent)" stroke-width="1" fill="none" opacity="0.35"/>
+                <path d="M153 90h10M158 85v10" stroke="var(--color-accent)" stroke-width="1" opacity="0.35"/>
+                <circle cx="322" cy="90" r="12" stroke="var(--color-iron)" stroke-width="1" fill="none" opacity="0.35"/>
+                <path d="M317 90h10M322 85v10" stroke="var(--color-iron)" stroke-width="1" opacity="0.35"/>
+                <!-- Electron path -->
+                <path d="M210 65 L210 42 L270 42 L270 65" stroke="var(--color-text-dim)" stroke-width="1" fill="none" stroke-dasharray="4 3" opacity="0.3"/>
+                <text x="240" y="36" text-anchor="middle" fill="var(--color-text-dim)" font-size="10" font-family="var(--font-mono)" opacity="0.4">e&#8315;</text>
+                <!-- Label -->
+                <text x="240" y="290" text-anchor="middle" fill="var(--color-text-dim)" font-size="11" font-family="var(--font-mono)" opacity="0.5">REDOX FLOW BATTERY</text>
+              </svg>
+            </div>
+            <div class="tech-card__body">
+              <span class="tech-card__num">01</span>
+              <h3>Redox Flow Battery</h3>
+              <p>Iron-based electrolytes for stationary energy storage at grid scale. Abundant, non-toxic, and cost-effective &mdash; enabling safe long-duration storage.</p>
+              <ul class="tech-card__tags">
+                <li>Fe&#178;&#8314;/Fe&#179;&#8314; Chemistry</li>
+                <li>Grid Scale</li>
+                <li>Long Duration</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 02 — Hydrogen-Iron Hybrid -->
+          <div class="tech-card reveal-up">
+            <div class="tech-card__img-wrap">
+              <svg class="tech-card__svg" viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="100" y="40" width="280" height="220" rx="8" stroke="var(--color-text-dim)" stroke-width="1.5" opacity="0.4"/>
+                <line x1="240" y1="40" x2="240" y2="260" stroke="var(--color-accent)" stroke-width="2.5"/>
+                <text x="170" y="30" text-anchor="middle" fill="var(--color-hydrogen)" font-size="18" font-family="var(--font-mono)" font-weight="600">H&#8322;</text>
+                <text x="310" y="30" text-anchor="middle" fill="var(--color-iron)" font-size="18" font-family="var(--font-mono)" font-weight="600">Fe&#178;&#8314;/Fe&#179;&#8314;</text>
+                <circle class="h2-bubble" cx="160" cy="200" r="5" fill="var(--color-hydrogen)" opacity="0.4"/>
+                <circle class="h2-bubble" cx="180" cy="180" r="3.5" fill="var(--color-hydrogen)" opacity="0.3"/>
+                <circle class="h2-bubble" cx="145" cy="160" r="4" fill="var(--color-hydrogen)" opacity="0.35"/>
+                <circle class="h2-bubble" cx="195" cy="220" r="3" fill="var(--color-hydrogen)" opacity="0.25"/>
+                <circle class="h2-bubble" cx="170" cy="140" r="2.5" fill="var(--color-hydrogen)" opacity="0.3"/>
+                <rect x="241" y="100" width="138" height="159" fill="var(--color-iron)" opacity="0.05"/>
+                <line x1="140" y1="40" x2="140" y2="260" stroke="var(--color-text-dim)" stroke-width="1" stroke-dasharray="6 4"/>
+                <line x1="340" y1="40" x2="340" y2="260" stroke="var(--color-text-dim)" stroke-width="1" stroke-dasharray="6 4"/>
+                <rect x="20" y="100" width="50" height="80" rx="18" stroke="var(--color-hydrogen)" stroke-width="1.5" opacity="0.5"/>
+                <text x="45" y="146" text-anchor="middle" fill="var(--color-hydrogen)" font-size="12" font-family="var(--font-mono)" opacity="0.5">H&#8322;</text>
+                <line x1="70" y1="140" x2="100" y2="140" stroke="var(--color-hydrogen)" stroke-width="1" opacity="0.3" stroke-dasharray="4 3"/>
+                <text x="240" y="290" text-anchor="middle" fill="var(--color-text-dim)" font-size="11" font-family="var(--font-mono)">HYdROGEN - ELECTROLYTE</text>
+              </svg>
+            </div>
+            <div class="tech-card__body">
+              <span class="tech-card__num">02</span>
+              <h3>Hydrogen-Iron Hybrid Cells</h3>
+              <p>Combining hydrogen gas electrodes with iron electrolyte for improved energy density and round-trip efficiency.</p>
+              <ul class="tech-card__tags">
+                <li>H&#8322;/Fe Hybrid</li>
+                <li>High Efficiency</li>
+                <li>Novel Architecture</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 03 — Fuel Cell -->
+          <div class="tech-card reveal-up">
+            <div class="tech-card__img-wrap">
+              <svg class="tech-card__svg" viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="80" y="40" width="320" height="220" rx="8" stroke="var(--color-text-dim)" stroke-width="1.5" opacity="0.4"/>
+                <rect class="membrane-pulse" x="235" y="40" width="10" height="220" fill="var(--color-hydrogen)" opacity="0.12" rx="3"/>
+                <line x1="240" y1="40" x2="240" y2="260" stroke="var(--color-hydrogen)" stroke-width="2.5"/>
+                <line x1="150" y1="50" x2="150" y2="250" stroke="var(--color-text-dim)" stroke-width="1.5" stroke-dasharray="6 4"/>
+                <line x1="330" y1="50" x2="330" y2="250" stroke="var(--color-text-dim)" stroke-width="1.5" stroke-dasharray="6 4"/>
+                <text x="110" y="30" text-anchor="middle" fill="var(--color-hydrogen)" font-size="22" font-family="var(--font-mono)" font-weight="700">H&#8322;</text>
+                <text x="370" y="30" text-anchor="middle" fill="var(--color-accent)" font-size="22" font-family="var(--font-mono)" font-weight="700">O&#8322;</text>
+                <text x="200" y="120" fill="var(--color-hydrogen)" font-size="13" font-family="var(--font-mono)" opacity="0.4">H&#8314;</text>
+                <text x="200" y="160" fill="var(--color-hydrogen)" font-size="13" font-family="var(--font-mono)" opacity="0.3">H&#8314;</text>
+                <text x="200" y="200" fill="var(--color-hydrogen)" font-size="13" font-family="var(--font-mono)" opacity="0.2">H&#8314;</text>
+                <text x="345" y="220" fill="var(--color-accent)" font-size="14" font-family="var(--font-mono)" opacity="0.4">H&#8322;O</text>
+                <path d="M150 40 L150 20 L330 20 L330 40" stroke="var(--color-text-dim)" stroke-width="1" fill="none" stroke-dasharray="4 4"/>
+                <text x="240" y="15" text-anchor="middle" fill="var(--color-text-dim)" font-size="11" font-family="var(--font-mono)">e&#8315;</text>
+                <text x="240" y="290" text-anchor="middle" fill="var(--color-text-dim)" font-size="11" font-family="var(--font-mono)">PEM MEMBRANE</text>
+              </svg>
+            </div>
+            <div class="tech-card__body">
+              <span class="tech-card__num">03</span>
+              <h3>Fuel Cell & Electrolyzer Technology</h3>
+              <p>Proton exchange membrane systems for clean power generation. Cell testing, MEA optimization, and performance characterization.</p>
+              <ul class="tech-card__tags">
+                <li>PEM Systems</li>
+                <li>MEA Optimization</li>
+                <li>Clean Power</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 04 — Electrochemical Testing -->
+          <div class="tech-card reveal-up">
+            <div class="tech-card__img-wrap">
+              <svg class="tech-card__svg svg-draw" viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="60" y1="260" x2="440" y2="260" stroke="var(--color-text-dim)" stroke-width="1"/>
+                <line x1="60" y1="260" x2="60" y2="40" stroke="var(--color-text-dim)" stroke-width="1"/>
+                <text x="250" y="295" text-anchor="middle" fill="var(--color-text-dim)" font-size="13" font-family="var(--font-mono)">Z' / &#937;</text>
+                <text x="35" y="150" text-anchor="middle" fill="var(--color-text-dim)" font-size="13" font-family="var(--font-mono)" transform="rotate(-90 35 150)">-Z'' / &#937;</text>
+                <path class="nyquist-line" d="M90 260 C95 255 105 240 120 215 C140 180 170 120 220 100 C270 80 310 130 340 180 C355 205 360 235 365 255 C367 258 368 259 370 260 L400 240 L420 225" stroke="var(--color-accent)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="90" cy="260" r="4" fill="var(--color-accent)" opacity="0.5"/>
+                <circle cx="170" cy="150" r="4" fill="var(--color-accent)" opacity="0.5"/>
+                <circle cx="220" cy="100" r="4" fill="var(--color-accent)" opacity="0.5"/>
+                <circle cx="310" cy="145" r="4" fill="var(--color-accent)" opacity="0.5"/>
+                <circle cx="370" cy="260" r="4" fill="var(--color-accent)" opacity="0.5"/>
+                <circle cx="420" cy="225" r="4" fill="var(--color-accent)" opacity="0.5"/>
+                <text x="220" y="85" text-anchor="middle" fill="var(--color-accent)" font-size="12" font-family="var(--font-mono)" opacity="0.5">R_ct</text>
+                <text x="415" y="218" fill="var(--color-accent)" font-size="12" font-family="var(--font-mono)" opacity="0.5">W</text>
+              </svg>
+            </div>
+            <div class="tech-card__body">
+              <span class="tech-card__num">04</span>
+              <h3>Electrochemical Testing &amp; Analysis</h3>
+              <p>EIS, galvanostatic cycling, cyclic voltammetry, and linear sweep voltammetry. From data acquisition to actionable insights.</p>
+              <ul class="tech-card__tags">
+                <li>EIS / CV / LSV</li>
+                <li>Impedance Analysis</li>
+                <li>Data-Driven</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════ EXPERIENCE ════════ -->
+    <section class="experience" id="experience">
+      <div class="container">
+        <div class="experience__header">
+          <span class="label reveal-up">Experience</span>
+          <h2 class="section-title split-reveal">Career highlights</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline__item reveal-up">
+            <div class="timeline__date">04/2022 &ndash; Present</div>
+            <div class="timeline__content">
+              <h3>R&D Engineer &mdash; VoltStorage GmbH, Munich</h3>
+              <ul>
+                <li>Led the design and iterative optimization of iron redox flow battery single cells and multi-cell stacks, driving significant gains in current density and system reliability</li>
+                <li>Engineered advanced flow field geometries to minimize hydraulic losses and improve electrolyte distribution across the cell stack</li>
+                <li>Developed and commissioned custom test benches for full electrochemical characterization, including EIS, galvanostatic cycling, CV, and LSV</li>
+                <li>Spearheaded the development of a novel iron-hydrogen hybrid cell concept from initial feasibility through functional prototype</li>
+                <li>Collaborated cross-functionally with mechanical, electrical, and systems engineering teams to integrate cell-level innovations into product-scale architectures</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline__item reveal-up">
+            <div class="timeline__date">10/2023 &ndash; 03/2024</div>
+            <div class="timeline__content">
+              <h3>Master&rsquo;s Thesis &mdash; VoltStorage / TUM</h3>
+              <ul>
+                <li>Conducted a systematic characterization of redox flow battery electrolytes to optimize pump selection and system-level hydraulic efficiency</li>
+                <li>Designed and executed experimental campaigns for viscosity, conductivity, and impedance measurements across varying operating conditions</li>
+                <li>Delivered actionable recommendations for balance-of-plant optimization based on data-driven analysis</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline__item reveal-up">
+            <div class="timeline__date">03/2023 &ndash; 08/2023</div>
+            <div class="timeline__content">
+              <h3>Research Internship &mdash; National Taiwan University, Taipei</h3>
+              <ul>
+                <li>Investigated metal-organic framework (MOF) coatings for NMC cathodes in lithium-ion batteries to enhance cycling stability and rate capability</li>
+                <li>Evaluated multiple coating methodologies and characterized their impact on electrode performance through electrochemical and morphological analysis</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline__item reveal-up">
+            <div class="timeline__date">10/2022 &ndash; 03/2023</div>
+            <div class="timeline__content">
+              <h3>Research Project &mdash; TUM</h3>
+              <ul>
+                <li>Studied membrane dry-out phenomena in PEM electrolysis cells and their impact on cell degradation and efficiency loss</li>
+                <li>Analyzed the influence of flow field geometry on membrane humidification and overall cell resistance through systematic experimental variation</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline__item reveal-up">
+            <div class="timeline__date">04/2021 &ndash; 10/2021</div>
+            <div class="timeline__content">
+              <h3>VonRoll Automotive, Augsburg</h3>
+              <ul>
+                <li>Supported the development of electrical and thermal insulation solutions for automotive battery systems</li>
+                <li>Contributed to material selection, process development, and prototype construction for high-voltage battery applications</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline__item reveal-up">
+            <div class="timeline__date">07/2018 &ndash; 12/2019</div>
+            <div class="timeline__content">
+              <h3>SGL Carbon, Meitingen</h3>
+              <ul>
+                <li>Advanced material and process development for carbon fiber reinforced polymer (CFRP) structural components</li>
+                <li>Contributed to the further development of forming processes for CFRP profiles and supported prototype construction</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="education reveal-up">
+          <h3 class="education__title">Education</h3>
+          <div class="education__grid">
+            <div class="education__item">
+              <span class="education__degree">M.Sc. Chemical Engineering</span>
+              <span class="education__school">Technical University of Munich (TUM)</span>
+              <span class="education__year">2021 &ndash; 2024</span>
+            </div>
+            <div class="education__item">
+              <span class="education__degree">B.Eng. Energy &amp; Process Engineering</span>
+              <span class="education__school">University of Applied Sciences Augsburg</span>
+              <span class="education__year">2016 &ndash; 2022</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════ CONTACT ════════ -->
+    <section class="contact" id="contact">
+      <div class="container contact__inner">
+        <span class="label reveal-up">Contact</span>
+        <h2 class="contact__heading split-reveal">Let&rsquo;s discuss<br>your project</h2>
+        <p class="contact__subtext reveal-up">Whether you need help with electrochemical cell development, technology evaluation, or prototyping &mdash;&nbsp;I&nbsp;am happy to explore how I can contribute.</p>
+        <div class="contact__links reveal-up">
+          <a href="mailto:birkholz.jm@gmail.com" class="contact__link">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 7l10 6 10-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>birkholz.jm@gmail.com</span>
+          </a>
+          <a href="https://www.linkedin.com/in/jannik-birkholz-6077551aa" target="_blank" rel="noopener noreferrer" class="contact__link">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="1.5"/><circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+            <span>Connect on LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>&copy; 2026 Jannik Birkholz</span>
+      <span>Munich, Germany</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
